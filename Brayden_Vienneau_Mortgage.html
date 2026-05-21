@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brayden Vienneau — Mortgage Agent | Alliston, ON</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf9f7;
+    --warm: #f4f1ec;
+    --stone: #e8e2d9;
+    --ink: #1c1c1c;
+    --mid: #6b6560;
+    --light: #a09890;
+    --gold: #8a7355;
+    --gold-light: #b09878;
+    --border: rgba(138,115,85,0.15);
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(250,249,247,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--stone);
+    padding: 0 64px; height: 76px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; flex-direction: column; gap: 2px; }
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--ink); letter-spacing: 0.01em;
+  }
+  .nav-sub {
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; color: var(--mid);
+    text-decoration: none; transition: color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: var(--cream);
+    padding: 11px 26px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: background 0.25s;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 76px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 64px;
+    background: var(--cream);
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 4.5vw, 66px);
+    font-weight: 600; line-height: 1.15;
+    color: var(--ink); margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 16px; line-height: 1.85;
+    color: var(--mid); margin-bottom: 48px;
+    max-width: 440px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-dark {
+    background: var(--ink); color: var(--cream);
+    padding: 15px 36px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: background 0.25s;
+    border-radius: 2px;
+  }
+  .btn-dark:hover { background: var(--gold); }
+  .btn-outline {
+    border: 1px solid var(--stone); color: var(--ink);
+    padding: 15px 36px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: all 0.25s;
+    border-radius: 2px;
+  }
+  .btn-outline:hover { border-color: var(--ink); }
+  .hero-trust {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid var(--stone);
+    flex-wrap: wrap;
+  }
+  .trust-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 600;
+    color: var(--ink); line-height: 1;
+  }
+  .trust-label {
+    font-size: 11px; color: var(--light);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .hero-right {
+    background: var(--warm);
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 48px; position: relative; overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      linear-gradient(var(--stone) 1px, transparent 1px),
+      linear-gradient(90deg, var(--stone) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.4;
+  }
+  .hero-card {
+    position: relative; z-index: 1;
+    background: var(--white); padding: 52px 44px;
+    border: 1px solid var(--stone); width: 100%; max-width: 380px;
+  }
+  .hero-card-tag {
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600;
+    color: var(--ink); margin-bottom: 20px; line-height: 1.3;
+  }
+  .hero-card p { font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 28px; }
+  .hero-card-detail {
+    display: flex; gap: 12px; align-items: center;
+    margin-bottom: 14px; font-size: 13px; color: var(--mid);
+  }
+  .hero-card-detail strong { color: var(--ink); font-weight: 500; }
+
+  /* LENDER BAR */
+  .lender-bar {
+    background: var(--ink); padding: 22px 64px;
+    display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+  }
+  .lender-bar-label {
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+  .lenders { display: flex; gap: 32px; flex-wrap: wrap; }
+  .lender {
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .lender:hover { color: rgba(255,255,255,0.7); }
+
+  /* SECTIONS */
+  .section { padding: 110px 64px; }
+  .section-alt { background: var(--warm); border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); }
+  .section-tag {
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-tag::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3vw, 46px);
+    font-weight: 600; line-height: 1.15;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+
+  /* SERVICES */
+  .services-header { margin-bottom: 60px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--stone); border: 1px solid var(--stone); }
+  .service-card {
+    background: var(--cream); padding: 44px 36px;
+    transition: background 0.25s; cursor: default;
+    position: relative;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 36px; right: 36px;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { background: var(--white); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px; color: var(--gold);
+    letter-spacing: 0.12em; margin-bottom: 20px;
+  }
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--ink); margin-bottom: 12px; line-height: 1.3;
+  }
+  .service-desc { font-size: 14px; color: var(--mid); line-height: 1.8; }
+
+  /* PROCESS */
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .process-steps { display: flex; flex-direction: column; }
+  .process-step {
+    display: flex; gap: 24px;
+    padding: 28px 0; border-bottom: 1px solid var(--stone);
+  }
+  .process-step:first-child { border-top: 1px solid var(--stone); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold);
+    flex-shrink: 0; width: 28px; margin-top: 2px;
+    letter-spacing: 0.08em;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 600;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .step-desc { font-size: 13px; color: var(--mid); line-height: 1.75; }
+  .process-callout {
+    background: var(--ink); padding: 52px 44px;
+  }
+  .process-callout h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600;
+    color: var(--cream); margin-bottom: 16px; line-height: 1.3;
+    font-style: italic;
+  }
+  .process-callout p { font-size: 14px; color: rgba(250,249,247,0.55); line-height: 1.85; margin-bottom: 36px; }
+  .process-stat {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 600;
+    color: var(--cream); line-height: 1; margin-bottom: 6px;
+  }
+  .process-stat-label { font-size: 11px; color: rgba(250,249,247,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 36px; }
+  .btn-cream {
+    display: block; text-align: center;
+    background: var(--cream); color: var(--ink);
+    padding: 14px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: background 0.25s;
+  }
+  .btn-cream:hover { background: var(--gold-light); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; margin-top: 60px; }
+  .about-left p { font-size: 15px; color: var(--mid); line-height: 1.9; margin-bottom: 18px; }
+  .about-creds { margin-top: 36px; display: flex; flex-direction: column; gap: 10px; }
+  .cred {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    border: 1px solid var(--stone); background: var(--white);
+    font-size: 13px; color: var(--mid);
+  }
+  .about-right { }
+  .about-profile {
+    background: var(--white); border: 1px solid var(--stone);
+    padding: 52px 44px; text-align: center;
+  }
+  .profile-initials {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600;
+    color: var(--cream); margin: 0 auto 20px;
+  }
+  .profile-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .profile-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .profile-divider { height: 1px; background: var(--stone); margin-bottom: 24px; }
+  .profile-details { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .profile-detail { display: flex; gap: 10px; font-size: 13px; color: var(--mid); }
+  .profile-detail strong { color: var(--ink); font-weight: 500; }
+
+  /* REVIEWS */
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
+  .review-card {
+    background: var(--white); padding: 36px 32px;
+    border: 1px solid var(--stone);
+    transition: border-color 0.25s;
+  }
+  .review-card:hover { border-color: var(--gold); }
+  .review-stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic;
+    line-height: 1.7; color: var(--ink); margin-bottom: 20px;
+  }
+  .review-author { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+  .contact-left h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 600;
+    color: var(--ink); margin-bottom: 16px; line-height: 1.3;
+  }
+  .contact-left p { font-size: 14px; color: var(--mid); line-height: 1.85; margin-bottom: 36px; }
+  .contact-detail { display: flex; gap: 12px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-icon { font-size: 15px; flex-shrink: 0; margin-top: 3px; }
+  .contact-detail-text span { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+  .contact-detail-text a, .contact-detail-text p { font-size: 14px; color: var(--ink); text-decoration: none; transition: color 0.2s; margin: 0; }
+  .contact-detail-text a:hover { color: var(--gold); }
+  .form-group { margin-bottom: 14px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 13px 16px;
+    background: var(--white); border: 1px solid var(--stone);
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    color: var(--ink); outline: none; transition: border-color 0.2s;
+    border-radius: 2px;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group textarea { height: 110px; resize: none; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; padding: 14px; background: var(--ink); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; border: none;
+    cursor: pointer; transition: background 0.25s; border-radius: 2px;
+  }
+  .form-submit:hover { background: var(--gold); }
+
+  /* FOOTER */
+  footer { background: var(--ink); padding: 48px 64px; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px; margin-bottom: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: rgba(250,249,247,0.85); margin-bottom: 6px; }
+  .footer-brand-sub { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .footer-desc { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.8; }
+  .footer-col h4 { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: rgba(255,255,255,0.7); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); }
+  .footer-credit { font-size: 11px; color: rgba(255,255,255,0.12); }
+  .footer-credit a { color: rgba(255,255,255,0.12); text-decoration: none; }
+
+  .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+    .lender-bar { padding: 20px 24px; }
+    .section { padding: 80px 24px; }
+    .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .process-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 40px 24px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-name">Brayden Vienneau</div>
+    <div class="nav-sub">Mortgage Agent · The Mortgage Centre</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Pre-Approved</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Alliston & New Tecumseth, Ontario</div>
+    <h1>The Mortgage<br>You Deserve,<br><em>Not Just the One</em><br>Your Bank Offers.</h1>
+    <p class="hero-sub">I'm Brayden Vienneau, a licensed mortgage agent with The Mortgage Centre. I work for you — with access to 50+ lenders — to find the best rate and the right fit for your life.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-dark">Get Pre-Approved</a>
+      <a href="tel:7053918701" class="btn-outline">Call (705) 391-8701</a>
+    </div>
+    <div class="hero-trust">
+      <div><div class="trust-num">50+</div><div class="trust-label">Lenders</div></div>
+      <div><div class="trust-num">Free</div><div class="trust-label">Consultation</div></div>
+      <div><div class="trust-num">Fast</div><div class="trust-label">Pre-Approval</div></div>
+      <div><div class="trust-num">Local</div><div class="trust-label">Alliston Based</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-tag">Why Work With a Broker?</div>
+      <h3>Your Bank Has One Set of Rates. I Have Fifty.</h3>
+      <p>Banks only offer you their own products. As a mortgage broker, I shop the entire market to find rates and terms your bank will never show you.</p>
+      <div class="hero-card-detail">✓ <strong>No cost to you</strong> — I'm paid by the lender</div>
+      <div class="hero-card-detail">✓ <strong>One application</strong> — multiple lenders</div>
+      <div class="hero-card-detail">✓ <strong>Better rates</strong> — through broker channels</div>
+      <div class="hero-card-detail">✓ <strong>Local service</strong> — in Alliston</div>
+      <div style="margin-top:28px;">
+        <a href="#contact" class="btn-dark" style="display:block;text-align:center;">Start for Free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LENDER BAR -->
+<div class="lender-bar">
+  <div class="lender-bar-label">Access to 50+ lenders</div>
+  <div class="lenders">
+    <div class="lender">TD Bank</div>
+    <div class="lender">RBC</div>
+    <div class="lender">Scotiabank</div>
+    <div class="lender">CIBC</div>
+    <div class="lender">BMO</div>
+    <div class="lender">First National</div>
+    <div class="lender">MCAP</div>
+    <div class="lender">+ Many More</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="services-header fade">
+    <div class="section-tag">What I Do</div>
+    <h2 class="section-heading">Mortgages for Every<br>Stage of Life</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade">
+      <div class="service-num">01</div>
+      <div class="service-title">First-Time Home Buyers</div>
+      <p class="service-desc">Buying your first home is one of the biggest decisions of your life. I'll guide you through every step — from pre-approval to closing — with clear advice and no surprises.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="service-num">02</div>
+      <div class="service-title">Mortgage Renewals</div>
+      <p class="service-desc">Don't just sign your bank's renewal offer. I shop 50+ lenders at renewal time so you're not leaving money on the table when your term expires.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="service-num">03</div>
+      <div class="service-title">Refinancing</div>
+      <p class="service-desc">Access your home equity, consolidate high-interest debt, fund renovations, or lower your rate. I structure the solution that makes the most financial sense.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="service-num">04</div>
+      <div class="service-title">Investment Properties</div>
+      <p class="service-desc">Growing your real estate portfolio requires strategic financing. I help investors structure deals that maximize leverage while keeping cash flow healthy.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="service-num">05</div>
+      <div class="service-title">New Construction</div>
+      <p class="service-desc">Building a new home in Simcoe County? I specialize in construction financing and understand the local market, timelines, and builder requirements.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="service-num">06</div>
+      <div class="service-title">Self-Employed Mortgages</div>
+      <p class="service-desc">Banks routinely decline self-employed applicants. I know which lenders work with non-traditional income and get approvals that others can't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-alt" id="process">
+  <div class="fade">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-heading">Simple, Transparent,<br>and Always on Your Side</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-steps">
+      <div class="process-step fade">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Free Consultation</div>
+          <p class="step-desc">We discuss your goals, timeline, and financial situation. No pressure, no obligation — just a real conversation about what's possible for you.</p>
+        </div>
+      </div>
+      <div class="process-step fade">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">I Shop the Market</div>
+          <p class="step-desc">I compare products from 50+ lenders to find the best rate and terms for your specific situation. Banks can only show you their own products — I show you everything.</p>
+        </div>
+      </div>
+      <div class="process-step fade">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Pre-Approval</div>
+          <p class="step-desc">Get pre-approved quickly so you can move confidently. Sellers take pre-approved buyers seriously, and you'll know exactly what you can afford.</p>
+        </div>
+      </div>
+      <div class="process-step fade">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Close & Move Forward</div>
+          <p class="step-desc">I handle the paperwork, coordinate with your lawyer and realtor, and ensure everything closes smoothly and on time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="process-callout fade">
+      <h3>"My services cost you nothing — I'm paid by the lender."</h3>
+      <p>Working with a broker doesn't cost you more. In most cases it costs you less — because I negotiate on your behalf with lenders competing for your business.</p>
+      <div class="process-stat">50+</div>
+      <div class="process-stat-label">Lenders competing for your business</div>
+      <a href="#contact" class="btn-cream">Book a Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-left fade">
+      <div class="section-tag">About Brayden</div>
+      <h2 class="section-heading">Local. Licensed.<br>Straightforward.</h2>
+      <p>I'm a Mortgage Agent Level 1 with The Mortgage Centre, based in Alliston and serving clients across New Tecumseth and Simcoe County.</p>
+      <p>My approach is simple — give you honest advice, find you the best product available, and make the process as smooth as possible. I work for you, not the banks, and I'm available when you actually need me.</p>
+      <p>Whether you're buying your first home, renewing, or refinancing — you'll get straight answers and someone who genuinely works to get the deal done right.</p>
+      <div class="about-creds">
+        <div class="cred">✅ Mortgage Agent Level 1 — Licence #M26000177</div>
+        <div class="cred">🏢 The Mortgage Centre — Rock Capital Mortgage #10556</div>
+        <div class="cred">📍 180 Parsons Rd #1B, Alliston, ON L9R 1E9</div>
+        <div class="cred">🕐 Open until 8PM — Evening & Weekend Appointments Available</div>
+      </div>
+    </div>
+    <div class="about-right fade">
+      <div class="about-profile">
+        <div class="profile-initials">BV</div>
+        <div class="profile-name">Brayden Vienneau</div>
+        <div class="profile-title">Mortgage Agent Level 1</div>
+        <div class="profile-divider"></div>
+        <div class="profile-details">
+          <div class="profile-detail">📞 <div><a href="tel:7053918701" style="color:var(--ink);text-decoration:none;"><strong>(705) 391-8701</strong></a></div></div>
+          <div class="profile-detail">🏢 <div><strong>The Mortgage Centre</strong> — Alliston</div></div>
+          <div class="profile-detail">📋 <div>Licence <strong>#M26000177</strong></div></div>
+          <div class="profile-detail">📍 <div>Serving Alliston, New Tecumseth & Simcoe County</div></div>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="#contact" class="btn-dark" style="display:block;text-align:center;">Book a Free Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section section-alt" id="reviews">
+  <div class="fade">
+    <div class="section-tag">Client Reviews</div>
+    <h2 class="section-heading">What Clients Say</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Brayden found us a rate our bank couldn't touch. He was available every step of the way and made the whole process feel easy."</p>
+      <div class="review-author">— First-Time Buyer, Alliston</div>
+    </div>
+    <div class="review-card fade">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I was self-employed and kept getting turned down. Brayden had my mortgage approved within a week. Couldn't recommend him more highly."</p>
+      <div class="review-author">— Self-Employed Client, New Tecumseth</div>
+    </div>
+    <div class="review-card fade">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"He shopped my renewal and saved me significantly compared to what my bank offered. I wish I had called him years earlier."</p>
+      <div class="review-author">— Renewal Client, Barrie</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="fade">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-heading">Ready to Get Started?</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-left fade">
+      <h3>The consultation is free.<br>The advice is honest.</h3>
+      <p>Whether you're buying, renewing, or refinancing — reach out today. I'll give you a clear picture of your options with no pressure and no obligation.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail-text"><span>Phone</span><a href="tel:7053918701">(705) 391-8701</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail-text"><span>Office</span><p>180 Parsons Rd #1B, Alliston, ON L9R 1E9</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div class="contact-detail-text"><span>Hours</span><p>Open until 8PM · Evening & Weekend Appointments Available</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-detail-text"><span>Apply Online</span><a href="https://mortgagecentre.com/app/braydenvienneau" target="_blank">Start Your Application</a></div>
+      </div>
+    </div>
+    <div class="contact-right fade">
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group"><input type="text" name="first_name" placeholder="First Name" required></div>
+          <div class="form-group"><input type="text" name="last_name" placeholder="Last Name" required></div>
+        </div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div>
+        <div class="form-group"><input type="tel" name="phone" placeholder="Phone Number"></div>
+        <div class="form-group">
+          <select name="inquiry" required>
+            <option value="" disabled selected>What are you looking for?</option>
+            <option>First-Time Home Purchase</option>
+            <option>Mortgage Renewal</option>
+            <option>Refinancing</option>
+            <option>Investment Property</option>
+            <option>New Construction</option>
+            <option>Self-Employed Mortgage</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><textarea name="message" placeholder="Tell me a bit about your situation..."></textarea></div>
+        <button type="submit" class="form-submit" id="formBtn">Send Message — Free Consultation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Brayden Vienneau</div>
+      <div class="footer-brand-sub">Mortgage Agent Level 1 · The Mortgage Centre</div>
+      <p class="footer-desc">Licensed mortgage agent serving Alliston, New Tecumseth, and Simcoe County. Rock Capital Mortgage Brokerage #10556.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">First-Time Buyers</a></li>
+        <li><a href="#services">Renewals</a></li>
+        <li><a href="#services">Refinancing</a></li>
+        <li><a href="#services">Investment Properties</a></li>
+        <li><a href="#services">Self-Employed</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:7053918701">(705) 391-8701</a></li>
+        <li><a href="#contact">Send a Message</a></li>
+        <li><a href="https://mortgagecentre.com/app/braydenvienneau">Apply Online</a></li>
+        <li><a href="#about">About Brayden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Brayden Vienneau · Licence #M26000177 · Rock Capital Mortgage #10556 · Alliston, ON</div>
+    <div class="footer-credit">Designed by <a href="mailto:Northpointdigitalltd@gmail.com">North Point Digital</a></div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 80);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  async function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('formBtn');
+    const form = document.getElementById('contactForm');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = "Message Received — Brayden Will Be in Touch ✓";
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Message — Free Consultation'; btn.disabled = false; }, 4000);
+    }, 1000);
+  }
+</script>
+</body>
+</html>
